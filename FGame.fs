@@ -7,7 +7,23 @@ open Microsoft.Xna.Framework.Graphics
 open Microsoft.Xna.Framework.Input
 open Microsoft.Xna.Framework.Storage
 open System
+open Microsoft.FSharp.Collections
 open System.IO
+
+// TODO: Screen manager
+
+type ScreenState =
+  | Active
+  | Hidden
+  | MoveOn
+  | MoveOff
+
+type Screen =
+  { mutable State : ScreenState }
+
+type ScreenManager =
+  { mutable Screens : ResizeArray<Screen> }
+  with static member Start = { Screens = new ResizeArray<Screen>() }
 
 
 type FGame =
@@ -15,9 +31,11 @@ type FGame =
     inherit Game
     
     val mutable graphics : GraphicsDeviceManager
+    val mutable manager : ScreenManager
     
-    new() as this = { graphics = null } then this.graphics <- new GraphicsDeviceManager(this)
-    
+    new() as this = { graphics = null; manager = ScreenManager.Start } then 
+      this.graphics <- new GraphicsDeviceManager(this)
+        
     override this.Draw(gameTime) =
       let gd = this.graphics.GraphicsDevice
       gd.Clear(Color.Green)

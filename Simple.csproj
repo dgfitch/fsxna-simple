@@ -137,8 +137,8 @@
 
   <UsingTask AssemblyFile=".\Dependencies\xunit.runner.msbuild.dll" TaskName="Xunit.Runner.MSBuild.xunit" />
   <Target Name="BeforeBuild">
-    <Exec Command= '"c:\Program Files\FSharp-1.9.6.16\bin\fsc.exe" -r "c:\Program Files\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.dll" -r "c:\Program Files\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Game.dll" --debug:full --standalone FGame.fs -a -o "bin\x86\$(Configuration)\FGame.dll"' />
-    <Exec Command= '"c:\Program Files\FSharp-1.9.6.16\bin\fsc.exe" -r ".\Dependencies\xunit.dll" --debug:full Tests.fs -a -o "bin\x86\$(Configuration)\Tests.dll"' />
+    <Exec Command= '"c:\Program Files\FSharp-1.9.6.16\bin\fsc.exe" -r "c:\Program Files\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.dll" -r "c:\Program Files\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Game.dll" -r ".\Dependencies\FarseerPhysics.dll" --debug:full --standalone FGame.fs -a -o "bin\x86\$(Configuration)\FGame.dll"' />
+    <Exec Command= '"c:\Program Files\FSharp-1.9.6.16\bin\fsc.exe" -r ".\Dependencies\xunit.dll" -r "bin\x86\$(Configuration)\FGame.dll" --debug:full Tests.fs -a -o "bin\x86\$(Configuration)\Tests.dll"' />
 
     <Exec Command= 'copy Dependencies\xunit* bin\x86\$(Configuration)\' />
     <!-- -O +tailcalls -->
