@@ -134,9 +134,15 @@
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
        -->
+
+  <UsingTask AssemblyFile=".\Dependencies\xunit.runner.msbuild.dll" TaskName="Xunit.Runner.MSBuild.xunit" />
   <Target Name="BeforeBuild">
     <Exec Command= '"c:\Program Files\FSharp-1.9.6.16\bin\fsc.exe" -r "c:\Program Files\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.dll" -r "c:\Program Files\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Game.dll" --debug:full --standalone FGame.fs -a -o "bin\x86\$(Configuration)\FGame.dll"' />
+    <Exec Command= '"c:\Program Files\FSharp-1.9.6.16\bin\fsc.exe" -r ".\Dependencies\xunit.dll" --debug:full Tests.fs -a -o "bin\x86\$(Configuration)\Tests.dll"' />
+
+    <Exec Command= 'copy Dependencies\xunit* bin\x86\$(Configuration)\' />
     <!-- -O +tailcalls -->
+    <xunit assembly="bin\x86\$(Configuration)\Tests.dll" />
   </Target>
   <!--
   <Target Name="AfterBuild">

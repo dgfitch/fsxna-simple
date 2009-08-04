@@ -1,3 +1,5 @@
+namespace Simple
+
 open Microsoft.Xna.Framework
 open Microsoft.Xna.Framework.Audio
 open Microsoft.Xna.Framework.Content
@@ -6,6 +8,7 @@ open Microsoft.Xna.Framework.Input
 open Microsoft.Xna.Framework.Storage
 open System
 open System.IO
+
 
 type FGame =
   class
