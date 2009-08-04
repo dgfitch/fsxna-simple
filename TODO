@@ -1,1 +1,4 @@
 - Wrangle fsc and xunit compilation into a .fsproj
+- Actually use Farseer and the PhysicsSimulation
+- Real [simple] screen management
+- 2D drawing primitives and brushes
