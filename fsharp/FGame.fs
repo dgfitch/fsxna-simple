@@ -50,21 +50,24 @@ type Shape =
       { body = body; geom = geom }
 
 
-type Tiles(sim : PhysicsSimulator) =
-  class
-    let tiles = new ResizeArray<Shape>()
-
-    member this.Count = tiles.Count
-    member this.AddTile(x : float32, y : float32) =
-      tiles.Add(Shape.Rectangle(sim, 10.0f, 10.0f, 20.0f, x, y))
-  end
-
 type World() =
   class
-    let sim   = new PhysicsSimulator(vi 0 0)
-    let tiles = new Tiles(sim)
+    let sim   = new PhysicsSimulator(vi 0 200)
+    let shapes = new ResizeArray<Shape>()
+    let tiles = new ResizeArray<Shape>()
 
+    member this.AddShape(s : Shape) =
+      shapes.Add(s)
+
+    member this.AddTile(x : float32, y : float32) =
+      let tile = Shape.Rectangle(sim, 10.0f, 10.0f, 20.0f, x, y)
+      tile.body.IsStatic <- true
+      tiles.Add(tile)
+
+    member this.Sim = sim
     member this.Tiles = tiles
+    member this.Shapes = shapes
+    member this.Update(x) = sim.Update(x)
   end
 
 
