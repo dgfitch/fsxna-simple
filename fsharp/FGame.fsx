@@ -1,7 +1,10 @@
 #r @"c:\Program Files\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.dll" 
 #r @"c:\Program Files\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Game.dll" 
-#r @".\Dependencies\FarseerPhysics.dll"
+#r @"..\Dependencies\FarseerPhysics.dll"
+#load "UsefulCrud.fs"
 #load "FGame.fs"
+
+open Simple.UsefulCrud
 
 (*
 open System.Net.Sockets

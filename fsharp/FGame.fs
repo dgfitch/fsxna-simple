@@ -14,17 +14,14 @@ open System
 open Microsoft.FSharp.Collections
 open System.IO
 
-
-module UsefulCrud =
-  let v x y = new Vector2(float32 x, float32 y)
-
-open UsefulCrud
+open Simple.UsefulCrud
 
 type ScreenState =
   | Active
   | Hidden
   | MoveOn
   | MoveOff
+
 
 type Screen =
   { mutable State : ScreenState }
@@ -56,4 +53,3 @@ type FGame =
       let gd = this.graphics.GraphicsDevice
       gd.Clear(Color.Green)
   end
-  
