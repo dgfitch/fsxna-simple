@@ -2,3 +2,5 @@
 - Actually use Farseer and the PhysicsSimulation
 - Real [simple] screen management
 - 2D drawing primitives and brushes
+
+- FSI with listener thread so I can send it crap from vim

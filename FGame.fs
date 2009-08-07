@@ -6,11 +6,19 @@ open Microsoft.Xna.Framework.Content
 open Microsoft.Xna.Framework.Graphics
 open Microsoft.Xna.Framework.Input
 open Microsoft.Xna.Framework.Storage
+open FarseerGames.FarseerPhysics
+open FarseerGames.FarseerPhysics.Collisions
+open FarseerGames.FarseerPhysics.Dynamics
+open FarseerGames.FarseerPhysics.Factories
 open System
 open Microsoft.FSharp.Collections
 open System.IO
 
-// TODO: Screen manager
+
+module UsefulCrud =
+  let v x y = new Vector2(float32 x, float32 y)
+
+open UsefulCrud
 
 type ScreenState =
   | Active
@@ -21,9 +29,17 @@ type ScreenState =
 type Screen =
   { mutable State : ScreenState }
 
+// TODO: Screen manager
 type ScreenManager =
   { mutable Screens : ResizeArray<Screen> }
   with static member Start = { Screens = new ResizeArray<Screen>() }
+
+
+type World() =
+  class
+    let sim  = new PhysicsSimulator(v 0 0)
+    //let view = new PhysicsSimulatorView(sim)
+  end
 
 
 type FGame =
