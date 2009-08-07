@@ -4,6 +4,7 @@
 #load "UsefulCrud.fs"
 #load "FGame.fs"
 
+open Simple
 open Simple.UsefulCrud
 
 (*
